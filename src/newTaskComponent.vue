@@ -14,13 +14,14 @@
 </template>
 
 <script>
+import { bus } from './main.js'
 export default {
     data(){
         return {
             newHomework: ''
         }
     },
-    props: ['homeworks'], 
+    props: ['homeworks', 'toUpDateCounter'], 
     methods: {
         addHomework(){
             let text = this.newHomework.trim();
@@ -29,9 +30,14 @@ export default {
                     text: text,
                     finish: false
                 })
+                //this.toUpDateCounter();
+                bus.$emit('toUpDateCounter', this.homeworks.length)
             }
             this.newHomework = '';
         }
+    },
+    created(){
+        bus.$emit('toUpDateCounter', this.homeworks.length)
     }
 }
 </script>

@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <div class="jumbotron">
       <heading :heading='title'></heading>
-      <newtask :homeworks='homeworks'></newtask>
+      <newtask :homeworks='homeworks' :toUpDateCounter='toUpDateCounter'></newtask>
       <listhomeworks :homeworks='homeworks'></listhomeworks>
     </div>
   </div>
@@ -20,7 +20,7 @@
     },
     data() {
       return {
-        title: '-Lista de tareas-',
+        title: 'Lista de tareas',
         homeworks: [
           {
             text: 'Generar banner',
@@ -35,6 +35,11 @@
             finish: false
           }
         ],
+      }
+    },
+    methods: {
+      toUpDateCounter(){
+        this.numberHomeworks++;
       }
     }
   }
